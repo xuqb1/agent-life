@@ -18,15 +18,15 @@ Agent-Life 是一个**完全本地、完全私有**的“养成 AI 娃”引擎�
    git clone https://github.com/yourname/agent-life.git
    cd agent-life
 
-# 下载模型 示例
+## 下载模型 示例
    ```bash
    wget https://huggingface.co/lmstudio-community/Meta-Llama-3-8B-Instruct-GGUF/resolve/main/Meta-Llama-3-8B-Instruct-Q4_K_M.gguf \
      -O models/llama-3-8b-q4_k_m.gguf
-2. 安装依赖
+## 安装依赖
    ```bash
    pip install -r requirements.txt
 
-3. 运行
+## 运行
    Cli
    ```bash
    python -m src.cli
@@ -44,7 +44,7 @@ Agent-Life 是一个**完全本地、完全私有**的“养成 AI 娃”引擎�
    streamlit run src/app.py
    web 浏览器中: http://localhost:8501
 
-4. HTTP 服务
+## HTTP 服务
    ```bash
    uvicorn src.server:app --host 0.0.0.0 --port 8000 --reload
    文档: http://localhost:8000/docs
