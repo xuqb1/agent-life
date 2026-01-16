@@ -1,4 +1,3 @@
-```markdown
 # Agent-Life 🧬🤖  养成型本地智能人
 
 ## 项目简介
