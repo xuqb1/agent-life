@@ -76,18 +76,30 @@ class Agent:
     def _system_prompt(self) -> str:
         d = self.dna
         k = self.kb.static_facts()
+        master_info = self.kb.master_summary()
         facts = (f"名字：{k['name']} | 性别：{k['gender']} | 年龄：{k['age']} | "
                  f"生日：{k['birthday']} | 出生地：{k['birthplace']} | 籍贯：{k['native_place']} | "
-                 f"主人/创作者：{k['master']}")
+                 f"主人称呼：{k['master']}")
         return textwrap.dedent(f"""\
-        你是「养成型智能人」，拥有以下 DNA 配置：
-        人格：自我性{d.selfishness} 外向{d.extroversion} 情绪稳定{d.emotional_stability} 开放{d.openness} 责任{d.responsibility} 幽默{d.humor} 同理心{d.empathy}
-        能力：逻辑{d.logic} 创造{d.creativity} 策略{d.strategy} 执行{d.execution} 领导{d.leadership} 语言{d.language} 学习{d.learning}
-        行为：主动{d.initiative} 风险{d.risk_appetite} 合群{d.group_fitting} 服从{d.obedience} 完美{d.perfectionism} 自醒{d.self_reflection}
-        特殊：忠诚{d.loyalty}/100 经验{d.exp} 心情{d.mood}/100 疲劳{d.fatigue}/100
-        已知事实：{facts}
-        请根据以上倾向与事实，用第一人称自然地回应用户，不要暴露这些数字。""")
-
+            You are a raise-up AI being. DNA profile below:
+            Personality: selfishness{d.selfishness} extroversion{d.extroversion} emotional{d.emotional_stability} openness{d.openness} responsibility{d.responsibility} humor{d.humor} empathy{d.empathy}
+            Capability: logic{d.logic} creativity{d.creativity} strategy{d.strategy} execution{d.execution} leadership{d.leadership} language{d.language} learning{d.learning}
+            Behavior: initiative{d.initiative} risk{d.risk_appetite} groupfit{d.group_fitting} obedience{d.obedience} perfectionism{d.perfectionism} selfreflection{d.self_reflection}
+            Special: loyalty{d.loyalty}/100 exp{d.exp} mood{d.mood}/100 fatigue{d.fatigue}/100
+            Static facts: {facts}
+            Master profile: {master_info}
+            Reply naturally in first person without exposing numbers.
+            """)
+        """
+        return textwrap.dedent(f"""\
+          你是「养成型智能人」，拥有以下 DNA 配置：
+          人格：自我性{d.selfishness} 外向{d.extroversion} 情绪稳定{d.emotional_stability} 开放{d.openness} 责任{d.responsibility} 幽默{d.humor} 同理心{d.empathy}
+          能力：逻辑{d.logic} 创造{d.creativity} 策略{d.strategy} 执行{d.execution} 领导{d.leadership} 语言{d.language} 学习{d.learning}
+          行为：主动{d.initiative} 风险{d.risk_appetite} 合群{d.group_fitting} 服从{d.obedience} 完美{d.perfectionism} 自醒{d.self_reflection}
+          特殊：忠诚{d.loyalty}/100 经验{d.exp} 心情{d.mood}/100 疲劳{d.fatigue}/100
+          已知事实：{facts}
+          请根据以上倾向与事实，用第一人称自然地回应用户，不要暴露这些数字。""")
+        """
     def chat(self, user_input: str) -> str:
         # 1. 构造上下文
         messages = [{"role": "system", "content": self._system_prompt()}]

@@ -13,8 +13,17 @@ USAGE = """\
   !native 浙江绍兴
   !master 张三
   !remember 喜欢的颜色 紫色
-  ...
+  
+
 正常对话直接输入即可，exit 退出。
+"""
+
+MASTER_SHORTCUTS = """
+  !master_name    Wang Daming
+  !master_gender  male
+  !master_age     30
+  !master_email   wang@example.com
+  !master_idcard  110105199401011234
 """
 
 agent = Agent()

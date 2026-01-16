@@ -28,6 +28,11 @@ class Knowledge:
                 "birthplace"  : "unknown",
                 "native_place": "unknown",
                 "master"      : "unknown",
+                "master_name"   : "",          # 真实姓名
+                "master_gender" : "",          # 男 / 女 / 其他
+                "master_age"    : 0,           # 当前年龄
+                "master_email"  : "",          # 邮箱
+                "master_idcard" : "",          # 身份证号
                 "memo"        : {}   # 动态事实
             }
             self.save()
@@ -50,3 +55,14 @@ class Knowledge:
     def static_facts(self) -> Dict[str, Any]:
         """供 system prompt 使用"""
         return {k: v for k, v in self._facts.items() if k != "memo"}
+
+    def master_summary(self) -> str:
+        """Desensitized master info | 脱敏主人信息"""
+        name   = self._facts.get("master_name")   or "Unfilled"
+        gender = self._facts.get("master_gender") or "Unfilled"
+        age    = self._facts.get("master_age")    or "Unfilled"
+        email  = self._facts.get("master_email")  or "Unfilled"
+        idcard = self._facts.get("master_idcard") or "Unfilled"
+        if idcard != "Unfilled" and len(idcard) > 8:
+            idcard = idcard[:4] + "****" + idcard[-4:]  # 简单脱敏 | simple desensitization
+        return f"Name:{name} | Gender:{gender} | Age:{age} | Email:{email} | ID:{idcard}"
