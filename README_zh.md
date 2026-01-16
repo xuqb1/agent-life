@@ -22,6 +22,7 @@ Agent-Life 是一个**完全本地、完全私有**的“养成 AI 娃”引擎�
    ```bash
    wget https://huggingface.co/lmstudio-community/Meta-Llama-3-8B-Instruct-GGUF/resolve/main/Meta-Llama-3-8B-Instruct-Q4_K_M.gguf \
      -O models/llama-3-8b-q4_k_m.gguf
+
 ## 安装依赖
    ```bash
    pip install -r requirements.txt
