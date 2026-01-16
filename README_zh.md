@@ -13,24 +13,27 @@ Agent-Life 是一个**完全本地、完全私有**的“养成 AI 娃”引擎�
 - 🏠 100% 离线：基于 llama-cpp-python，支持任意 GGUF 模型
 - 🪶 单文件 CLI，核心代码 <300 行，方便二次开发
 
-## 快速开始
-1. 克隆仓库
+# 快速开始
+## 1. 克隆仓库
    ```bash
    git clone https://github.com/yourname/agent-life.git
    cd agent-life
+   ```
 
-# 下载模型 示例
+## 2. 下载模型 示例
    ```bash
    wget https://huggingface.co/lmstudio-community/Meta-Llama-3-8B-Instruct-GGUF/resolve/main/Meta-Llama-3-8B-Instruct-Q4_K_M.gguf \
      -O models/llama-3-8b-q4_k_m.gguf
-2. 安装依赖
+## 3. 安装依赖
    ```bash
    pip install -r requirements.txt
-
-3. 运行
+   ```
+   
+## 4. 运行
    Cli
    ```bash
    python -m src.cli
+   ```
    
    用自然语言或以下快捷方式设置你的智能人:
       !name 小星
@@ -43,26 +46,31 @@ Agent-Life 是一个**完全本地、完全私有**的“养成 AI 娃”引擎�
    Web
    ```bash
    streamlit run src/app.py
+   ```
    web 浏览器中: http://localhost:8501
 
-4. HTTP 服务
+## 5. HTTP 服务
    ```bash
    uvicorn src.server:app --host 0.0.0.0 --port 8000 --reload
+   ```
    文档: http://localhost:8000/docs
 
-# 回调示例
+## 6 回调示例
    ```bash
    curl -X POST http://localhost:8000/chat \
      -H "Content-Type: application/json" \
      -d '{"message":"who am I"}'
 
-## 启动脚本
-# 1. 服务端
+# 启动脚本
+## 1. 服务端
    ```bash
    uvicorn src.server:app --host 0.0.0.0 --port 8000 --reload
-# 2. 客户端(新开终端)
+   ```
+## 2. 客户端(新开终端)
    ```bash
    streamlit run src/client.py --server.port 8501
-# 3. 管理端(新开终端)
+   ```
+## 3. 管理端(新开终端)
    ```bash
    streamlit run src/admin.py --server.port 8502
+   ```
