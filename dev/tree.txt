@@ -1,0 +1,15 @@
+agent-life/
+├─ README.md                 ← 中英双语
+├─ README_zh.md              ← 中文独立版（可选）
+├─ requirements.txt
+├─ .gitignore
+├─ data/
+│  ├─ dna.json               ← DNA 配置
+│  ├─ facts.json             ← 事实知识库
+├─ models/
+│  └─ .gitkeep               ← 放 GGUF 模型
+├─ src/
+   ├─ __init__.py
+   ├─ knowledge.py            ← 知识库读写
+   ├─ agent.py                ← 昨晚代码升级
+   └─ cli.py                  ← 启动入口

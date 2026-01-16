@@ -1,0 +1,5 @@
+# 需要 Python 3.9+  
+pip install llama-cpp-python --upgrade --force-reinstall --no-cache-dir  
+# 如果本机有 GPU（CUDA）  
+# CMAKE_ARGS="-DLLAMA_CUBLAS=on" pip install llama-cpp-python  
+pip install pydantic~=2.0

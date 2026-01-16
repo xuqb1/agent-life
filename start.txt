@@ -1,0 +1,25 @@
+# 1) 安装依赖
+pip install -r requirements.txt
+
+# 2) Web 图形界面
+streamlit run src/app.py
+# 浏览器自动打开 http://localhost:8501
+
+# 3) HTTP 服务
+uvicorn src.server:app --host 0.0.0.0 --port 8000 --reload
+# 文档 http://localhost:8000/docs
+
+# 调用示例(Server)
+curl -X POST http://localhost:8000/chat \
+     -H "Content-Type: application/json" \
+     -d '{"message":"who am I"}'
+
+# 启动脚本
+# 1. 服务端
+uvicorn src.server:app --host 0.0.0.0 --port 8000 --reload
+
+# 2. 客户端（新开终端）
+streamlit run src/client.py --server.port 8501
+
+# 3. 管理端（再新开终端）
+streamlit run src/admin.py --server.port 8502
