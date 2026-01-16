@@ -23,10 +23,10 @@ It loads automatically on every run, remembers forever, and grows through self-r
    ```bash
    wget https://huggingface.co/lmstudio-community/Meta-Llama-3-8B-Instruct-GGUF/resolve/main/Meta-Llama-3-8B-Instruct-Q4_K_M.gguf \
      -O models/llama-3-8b-q4_k_m.gguf
-2. Install dependence
+
+# Install dependence
    ```bash
    pip install -r requirements.txt
-
 
 3. Run
    Cli
