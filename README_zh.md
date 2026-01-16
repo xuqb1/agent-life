@@ -1,5 +1,5 @@
 ```markdown
-# Agent-Life 🧬🤖  养成型本地智能人
+# Agent-Life 🧬🤖  养成型本地智能人 「越聊越懂你」
 
 ## 项目简介
 Agent-Life 是一个**完全本地、完全私有**的“养成 AI 娃”引擎。  

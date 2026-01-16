@@ -16,6 +16,10 @@ if st.button("Login"):
     st.session_state.master = True
 
 if st.session_state.get("master"):
+    user = st.selectbox("Select user", [d.name for d in (USERS_ROOT.iterdir()) if d.is_dir()])
+    if user:
+        pro = requests.get(f"{API_URL}/profile", headers={"user-email": f"{user}@demo.com"}).json()
+        st.json(pro)
     dna = requests.get(API_URL+"/facts").json()
     st.json(dna)
     with st.form("dna_form"):

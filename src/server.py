@@ -2,7 +2,7 @@
 FastAPI HTTP Server for Agent-Life | 接口服务
 POST /chat  {"message": "hi"}
 """
-from fastapi import FastAPI
+from fastapi import FastAPI, Header
 from pydantic import BaseModel
 from agent import Agent
 from knowledge import Knowledge
@@ -39,6 +39,8 @@ def _gen_summary_and_emotion(messages: List[Dict]) -> (str, str):
 @app.post("/chat", response_model=ChatResponse)
 def chat(req: ChatRequest, user_email: str = Header(default="")):
     global chat_turns
+    # 挂载侧写
+    agent.current_profile = load_profile(username)
     # 1. 正常回复
     reply = agent.chat(req.message)
     master_flag = is_master(user_email)

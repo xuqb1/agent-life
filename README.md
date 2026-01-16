@@ -1,4 +1,4 @@
-# Agent-Life 🧬🤖  养成型本地智能人
+# Agent-Life 🧬🤖  "The more you talk, the more it knows you."
 
 [中文说明](README_zh.md)
 

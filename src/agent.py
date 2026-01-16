@@ -80,6 +80,11 @@ class Agent:
         facts = (f"名字：{k['name']} | 性别：{k['gender']} | 年龄：{k['age']} | "
                  f"生日：{k['birthday']} | 出生地：{k['birthplace']} | 籍贯：{k['native_place']} | "
                  f"主人称呼：{k['master']}")
+        # 如果请求带侧写，则追加 | append if profile exists
+        profile = getattr(self, "current_profile", {})
+        if profile:
+            facts += f"\nUser Profile: emotion={profile.get('emotion_tendency')} topics={profile.get('topics')} food={profile.get('food')} color={profile.get('color')} birthday={profile.get('birthday')} people={list(profile.get('people_cared', {}).keys())}"
+
         return textwrap.dedent(f"""\
             You are a raise-up AI being. DNA profile below:
             Personality: selfishness{d.selfishness} extroversion{d.extroversion} emotional{d.emotional_stability} openness{d.openness} responsibility{d.responsibility} humor{d.humor} empathy{d.empathy}
